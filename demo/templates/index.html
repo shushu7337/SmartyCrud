@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>{$title}</title>
+</head>
+<style>
+  .tb1 {
+    border: 1px solid lightgray;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .ttr1 {
+    border-bottom: block 1px solid;
+  }
+
+  .ttr2 {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <fieldset width="80%">
+    <legend>{$AllList}</legend>
+    <form action="../admin/edit.php" method="post">
+      <table class="tb1" style="text-align: center;">
+        <tr>
+          <th class="ttr1">英</th>
+          <th class="ttr1">中</th>
+          <th class="ttr1">刪除</th>
+        </tr>
+        {foreach from=$allList item=all key=id}
+        <tr>
+          <td class="ttr2"><input type="text" name="en[]" value="{$all.en}"></td>
+          <td class="ttr2"><input type="text" name="cn[]" value="{$all.cn}"></td>
+          <td class="ttr2"><input type="checkbox" name="del[]" value="{$all.id}"></td>
+          <input type="hidden" name="id[]" value="{$all.id}">
+        </tr>
+        {/foreach}
+      </table>
+      <input type="submit" value="確定修改">
+    </form>
+    <a href="./templates/add.html">新增</a>
+  </fieldset>
+  <fieldset>
+    <legend>Search Here!!</legend>
+    <form action="../demo/search.php" method="post">
+      <table>
+        <tr>
+          <td><input type="text" name="en"></td>
+          <td><input type="submit" value="search"></td>
+        </tr>
+      </table>
+    </form>
+    {if isset($searchData)}
+    <legend>Result</legend>
+    <table>
+      <tr>
+        <td>{$searchData.en}</td>
+        <td>{$searchData.cn}</td>
+      </tr>
+    </table>
+    {/if}
+  </fieldset>
+</body>
+
+</html>
