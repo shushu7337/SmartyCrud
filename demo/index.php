@@ -1,5 +1,5 @@
 <?php
-require '../libs/Smarty.class.php';
+require '../vendor/autoload.php';
 include_once '../admin/allList.php';
 $smarty = new Smarty;
 $smarty->assign("title", "SMARTY_CrudTry");
